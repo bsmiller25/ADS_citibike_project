@@ -10,11 +10,11 @@ mkdir -p data
 # download and prepare the data
 
 # LEHD Origin Destination Table
-curl -o 'data/lehd_od_2014.csv.gz' http://lehd.ces.census.gov/data/lodes/LODES7/ny/od/ny_od_main_JT05_2014.csv.gz
+curl -o 'data/lehd_od_2014.csv.gz' http://lehd.ces.census.gov/data/lodes/LODES7/ny/od/ny_od_main_JT00_2014.csv.gz
 gunzip data/lehd_od_2014.csv.gz
 
 # Citi Bike Data
-curl -o 'data/citibike_201401.zip' https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip 
+curl -o 'data/citibike_201401.zip' https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip
 unzip 'data/citibike_201401.zip' -d data/
 mv 'data/2014-01 - Citi Bike trip data.csv' data/citibike_201401.csv
 rm 'data/citibike_201401.zip'
