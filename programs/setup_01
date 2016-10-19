@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ## setup_01
 
 ## this script prepares the working directory and downloads the raw data we will use in this project
@@ -15,17 +14,16 @@ mkdir -p data
 
 # LEHD Origin Destination Table
 curl -o 'data/lehd_od_2014.csv.gz' http://lehd.ces.census.gov/data/lodes/LODES7/ny/od/ny_od_main_JT00_2014.csv.gz
-gunzip data/lehd_od_2014.csv.gz
+gunzip -f data/lehd_od_2014.csv.gz
+
+# NYC Census Blocks 2010
+curl -o 'data/NYCCB10.zip' http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/nycb2010_16c.zip
+unzip -o 'data/NYCCB10.zip' -d data/
+rm 'data/NYCCB10.zip'
 
 # Citi Bike Data
 curl -o 'data/citibike_201401.zip' https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip
-unzip 'data/citibike_201401.zip' -d data/
+unzip -o data/citibike_201401.zip -d data/
 mv 'data/2014-01 - Citi Bike trip data.csv' data/citibike_201401.csv
 rm 'data/citibike_201401.zip'
-
-
-# Manhattan shape files
-curl -o 'data/mnmanp.zip' https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/mn_mappluto_16v1.zip
-unzip data/mnmanp.zip -d data/Manhattan/
-rm data/mnmanp.zip
 
