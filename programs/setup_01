@@ -17,9 +17,12 @@ curl -o 'data/lehd_od_2014.csv.gz' http://lehd.ces.census.gov/data/lodes/LODES7/
 gunzip -f data/lehd_od_2014.csv.gz
 
 # NYC Census Blocks 2010
+
 curl -o 'data/NYCCB10.zip' http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/nycb2010_16c.zip
 unzip -o 'data/NYCCB10.zip' -d data/
 rm 'data/NYCCB10.zip'
+
+#curl -o 'data/nyc_cb.geojson' http://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/nycb2010/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=geojson
 
 # Citi Bike Data
 curl -o 'data/citibike_201401.zip' https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip
