@@ -7,8 +7,8 @@ Instead, use: /opt/rh/anaconda/root/envs/PUI2016_Python2/bin/python
 
 ## Programs:
 
-1) setup_01: prepares working directory and downloads data
+1) 01\_setup: prepares working directory and downloads data
 
-2) geopandas_testing.py: this will hopefully become our program for merging datasets together. it has this bad name beacuse I was messing around with plots for a little while as well (since removed). 
+2) 02\_create\_cb\_dist: Uses LEHD Origin-Destination table and Census Block level data to calculate the average commute distance for each Census Block. 
 
 
