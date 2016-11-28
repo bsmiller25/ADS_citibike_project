@@ -12,21 +12,31 @@ mkdir -p data
 
 # download and prepare the data
 
-# LEHD Origin Destination Table
+# 2014 LEHD Origin Destination Table
 curl -o 'data/lehd_od_2014.csv.gz' http://lehd.ces.census.gov/data/lodes/LODES7/ny/od/ny_od_main_JT00_2014.csv.gz
 gunzip -f data/lehd_od_2014.csv.gz
 
 # NYC Census Blocks 2010
-
 curl -o 'data/NYCCB10.zip' http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/nycb2010_16c.zip
 unzip -o 'data/NYCCB10.zip' -d data/
 rm 'data/NYCCB10.zip'
 
-#curl -o 'data/nyc_cb.geojson' http://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/nycb2010/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=geojson
+# 2014 Citi Bike Data
+# January to August
+for m in $(seq 1 8)
+do
+  curl -o 'data/citibike_20140'$m'.zip' https://s3.amazonaws.com/tripdata/20140$m-citibike-tripdata.zip
+  unzip -o data/citibike_20140$m.zip -d data/
+  mv 'data/2014-0'$m' - Citi Bike trip data.csv' data/citibike_20140$m.csv
+  rm 'data/citibike_20140'$m'.zip'
+done
 
-# Citi Bike Data
-curl -o 'data/citibike_201401.zip' https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip
-unzip -o data/citibike_201401.zip -d data/
-mv 'data/2014-01 - Citi Bike trip data.csv' data/citibike_201401.csv
-rm 'data/citibike_201401.zip'
+# September to December
+for m in $(seq -w 9 12)
+do
+  curl -o 'data/citibike_2014'$m'.zip' https://s3.amazonaws.com/tripdata/2014$m-citibike-tripdata.zip
+  unzip -o data/citibike_2014$m.zip -d data/
+  mv 'data/2014'$m'-citibike-tripdata.csv' data/citibike_2014$m.csv
+  rm 'data/citibike_2014'$m'.zip'
+done
 
