@@ -40,3 +40,8 @@ do
   rm 'data/citibike_2014'$m'.zip'
 done
 
+# Demographic data
+curl -o data/demo.zip http://www2.census.gov/geo/tiger/TIGER_DP/2011ACS/2011_ACS_5YR_BG_36.gdb.zip
+
+unzip data/demo.zip -d data/
+rm data/demo.zip
