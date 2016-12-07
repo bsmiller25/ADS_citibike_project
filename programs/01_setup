@@ -40,6 +40,35 @@ do
   rm 'data/citibike_2014'$m'.zip'
 done
 
+# 2015 Citi Bike Data
+# January to August
+for m in $(seq 1 8)
+do
+  curl -o 'data/citibike_20150'$m'.zip' https://s3.amazonaws.com/tripdata/20150$m-citibike-tripdata.zip
+  unzip -o data/citibike_20150$m.zip -d data/
+  mv 'data/2015-0'$m' - Citi Bike trip data.csv' data/citibike_20150$m.csv
+  rm 'data/citibike_20150'$m'.zip'
+done
+
+# September to December
+for m in $(seq -w 9 12)
+do
+  curl -o 'data/citibike_2015'$m'.zip' https://s3.amazonaws.com/tripdata/2015$m-citibike-tripdata.zip
+  unzip -o data/citibike_2015$m.zip -d data/
+  mv 'data/2015'$m'-citibike-tripdata.csv' data/citibike_2015$m.csv
+  rm 'data/citibike_2015'$m'.zip'
+done
+
+# 2016 Citi Bike Data
+# January to August
+for m in $(seq 1 9)
+do
+  curl -o 'data/citibike_20160'$m'.zip' https://s3.amazonaws.com/tripdata/20160$m-citibike-tripdata.zip
+  unzip -o data/citibike_20160$m.zip -d data/
+  mv 'data/2016-0'$m' - Citi Bike trip data.csv' data/citibike_20160$m.csv
+  rm 'data/citibike_20160'$m'.zip'
+done
+
 # Demographic data
 curl -o data/demo.zip http://www2.census.gov/geo/tiger/TIGER_DP/2011ACS/2011_ACS_5YR_BG_36.gdb.zip
 
