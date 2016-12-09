@@ -41,17 +41,7 @@ do
 done
 
 # 2015 Citi Bike Data
-# January to August
-for m in $(seq 1 8)
-do
-  curl -o 'data/citibike_20150'$m'.zip' https://s3.amazonaws.com/tripdata/20150$m-citibike-tripdata.zip
-  unzip -o data/citibike_20150$m.zip -d data/
-  mv 'data/2015-0'$m' - Citi Bike trip data.csv' data/citibike_20150$m.csv
-  rm 'data/citibike_20150'$m'.zip'
-done
-
-# September to December
-for m in $(seq -w 9 12)
+for m in $(seq -w 1 12)
 do
   curl -o 'data/citibike_2015'$m'.zip' https://s3.amazonaws.com/tripdata/2015$m-citibike-tripdata.zip
   unzip -o data/citibike_2015$m.zip -d data/
@@ -60,13 +50,12 @@ do
 done
 
 # 2016 Citi Bike Data
-# January to August
-for m in $(seq 1 9)
+for m in $(seq -w 1 11)
 do
-  curl -o 'data/citibike_20160'$m'.zip' https://s3.amazonaws.com/tripdata/20160$m-citibike-tripdata.zip
-  unzip -o data/citibike_20160$m.zip -d data/
-  mv 'data/2016-0'$m' - Citi Bike trip data.csv' data/citibike_20160$m.csv
-  rm 'data/citibike_20160'$m'.zip'
+  curl -o 'data/citibike_2016'$m'.zip' https://s3.amazonaws.com/tripdata/2016$m-citibike-tripdata.zip
+  unzip -o data/citibike_2016$m.zip -d data/
+  mv 'data/2016'$m'-citibike-tripdata.csv' data/citibike_2016$m.csv
+  rm 'data/citibike_2016'$m'.zip'
 done
 
 # Demographic data
@@ -74,3 +63,6 @@ curl -o data/demo.zip http://www2.census.gov/geo/tiger/TIGER_DP/2011ACS/2011_ACS
 
 unzip data/demo.zip -d data/
 rm data/demo.zip
+
+# subway location data
+curl -o data/subway.csv http://data.ny.gov/api/views/i9wp-a4ja/rows.csv?accessType=DOWNLOAD 
