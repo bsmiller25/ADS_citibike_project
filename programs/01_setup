@@ -40,8 +40,29 @@ do
   rm 'data/citibike_2014'$m'.zip'
 done
 
+# 2015 Citi Bike Data
+for m in $(seq -w 1 12)
+do
+  curl -o 'data/citibike_2015'$m'.zip' https://s3.amazonaws.com/tripdata/2015$m-citibike-tripdata.zip
+  unzip -o data/citibike_2015$m.zip -d data/
+  mv 'data/2015'$m'-citibike-tripdata.csv' data/citibike_2015$m.csv
+  rm 'data/citibike_2015'$m'.zip'
+done
+
+# 2016 Citi Bike Data
+for m in $(seq -w 1 11)
+do
+  curl -o 'data/citibike_2016'$m'.zip' https://s3.amazonaws.com/tripdata/2016$m-citibike-tripdata.zip
+  unzip -o data/citibike_2016$m.zip -d data/
+  mv 'data/2016'$m'-citibike-tripdata.csv' data/citibike_2016$m.csv
+  rm 'data/citibike_2016'$m'.zip'
+done
+
 # Demographic data
 curl -o data/demo.zip http://www2.census.gov/geo/tiger/TIGER_DP/2011ACS/2011_ACS_5YR_BG_36.gdb.zip
 
 unzip data/demo.zip -d data/
 rm data/demo.zip
+
+# subway location data
+curl -o data/subway.csv http://data.ny.gov/api/views/i9wp-a4ja/rows.csv?accessType=DOWNLOAD 
